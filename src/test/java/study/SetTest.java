@@ -26,21 +26,22 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("set size test")
+    @DisplayName("numbers의 사이즈 갯수가 3인지 테스트 한다.")
     void setSizeTest() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void test(Integer input) {
-        numbers.stream().toArray();
+    @DisplayName("numbers에 들어 있는 숫자가 1,2,3이 맞는지 테스트 한다.")
+    void numbersSizeTest(Integer input) {
         assertTrue(numbers.contains(input));
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"}, delimiter = ':')
-    void test12(int input, boolean expected) {
+    @DisplayName("numbers에 들어 있는 숫자가 1,2,3이 맞다면 true 나머지는 false")
+    void numbersTrueOrFalseTest(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
